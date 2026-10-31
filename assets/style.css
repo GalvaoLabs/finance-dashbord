@@ -1,0 +1,26 @@
+/* Tema premium. Usa transparências para funcionar em modo claro e escuro. */
+:root { --accent: #38BDF8; --line: rgba(128,128,128,.22); --card: rgba(128,128,128,.07); }
+
+.block-container { padding-top: 2.2rem; max-width: 1280px; }
+[data-testid="stSidebar"] { border-right: 1px solid var(--line); }
+
+.cabecalho h1 { font-size: 2rem; font-weight: 700; letter-spacing: -.02em; margin: 0; }
+.cabecalho p  { opacity: .65; margin: .2rem 0 1.2rem; }
+
+.kpis { display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 14px; margin: .4rem 0 1.5rem; }
+.kpi { position: relative; overflow: hidden; background: var(--card); border: 1px solid var(--line);
+       border-radius: 16px; padding: 18px 20px; transition: transform .15s, border-color .15s; }
+.kpi:hover { transform: translateY(-2px); border-color: var(--accent); }
+.kpi::before { content: ""; position: absolute; inset: 0 0 auto 0; height: 3px;
+               background: linear-gradient(90deg, var(--accent), transparent); }
+.kpi .l { font-size: .72rem; letter-spacing: .09em; text-transform: uppercase; opacity: .65; }
+.kpi .v { font-size: 1.65rem; font-weight: 700; margin: .25rem 0 .1rem; font-variant-numeric: tabular-nums; }
+.kpi .s { font-size: .8rem; opacity: .65; }
+.kpi.pos .v { color: #34D399; }
+.kpi.neg .v { color: #FB7185; }
+
+.chips { display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 1rem; }
+.chip { border: 1px solid var(--line); background: var(--card); border-radius: 999px; padding: 4px 14px; font-size: .78rem; }
+.chip b { color: var(--accent); margin-left: 6px; }
+
+div[data-testid="stPlotlyChart"] { border: 1px solid var(--line); border-radius: 16px; padding: 6px; background: var(--card); }

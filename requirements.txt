@@ -1,0 +1,7 @@
+streamlit>=1.50
+pandas
+plotly
+requests
+yfinance
+google-genai
+psycopg[binary]
