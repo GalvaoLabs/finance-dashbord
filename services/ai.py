@@ -24,5 +24,8 @@ def relatorio(df: pd.DataFrame, api_key: str, modelo: str = MODELO_PADRAO) -> st
 
     colunas = ["Ticker", "Tipo", "Valor Atual", "Rentab. (%)", "DY (%)", "Margem Seg. (%)", "Status"]
     tabela = df[colunas].round(2).to_string(index=False)
-    resposta = genai.Client(api_key=api_key).models.generate_content(model=modelo, contents=PROMPT.format(tabela=tabela))
+    # O cliente precisa ficar em uma variável: se for descartado na mesma linha, o Python o destrói
+    # e a conexão HTTP é fechada antes da chamada ("client has been closed").
+    cliente = genai.Client(api_key=api_key)
+    resposta = cliente.models.generate_content(model=modelo, contents=PROMPT.format(tabela=tabela))
     return resposta.text
